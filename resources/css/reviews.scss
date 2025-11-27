@@ -1,0 +1,117 @@
+$gradientLogo: linear-gradient(135deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+$glassBackground: rgba(255, 255, 255, 0.05);
+$glassBorder: rgba(255, 255, 255, 0.1);
+$yellowAccent: rgba(255, 228, 125, 0.9);
+
+.reviews-section {
+    padding: 60px 15rem 0;
+}
+
+.reviews-container {
+    max-width: 100%;
+}
+
+.reviews-title {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 50px 0;
+    background: $gradientLogo;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.review-card {
+    padding: 30px;
+    background: $glassBackground;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid $glassBorder;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 228, 125, 0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(255, 228, 125, 0.2);
+    }
+}
+
+.review-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.reviewer-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: $gradientLogo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255, 228, 125, 0.4);
+
+    span {
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+    }
+}
+
+.reviewer-details {
+    flex: 1;
+
+    .reviewer-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin: 0 0 6px 0;
+    }
+
+    .review-date {
+        font-size: 13px;
+        color: #777;
+    }
+}
+
+.review-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    .rating-stars {
+        color: #ffd700;
+        font-size: 16px;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
+
+    .rating-num {
+        font-size: 14px;
+        font-weight: 600;
+        color: $yellowAccent;
+        padding: 3px 10px;
+        background: rgba(255, 228, 125, 0.1);
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+}
+
+.review-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #ccc;
+    margin: 0;
+}

@@ -8,6 +8,19 @@
 //    width: 0;
 //}
 
+::selection {
+    background: rgba(250, 215, 68, 0.77); /* золотистый из твоего градиента */
+    color: #000000; /* белый текст */
+}
+
+::-webkit-selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #ffffff;
+}
+
+
+
+
 html,
 body {
     min-height: 100%;

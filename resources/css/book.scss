@@ -1,0 +1,320 @@
+$gradientLogo: linear-gradient(135deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+$glassBackground: rgba(255, 255, 255, 0.03);
+$glassBorder: rgba(255, 255, 255, 0.08);
+$yellowAccent: rgba(255, 228, 125, 0.95);
+
+.book-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #151515 0%, #000 55%, #000 100%);
+    padding-bottom: 80px;
+}
+
+.book-main {
+    padding: 80px 10rem;
+}
+
+.book-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 56px;
+    align-items: flex-start;
+}
+
+/* Обложка */
+.book-cover-section {
+    position: relative;
+    cursor: pointer;
+}
+
+.cover-wrapper {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: $glassBackground;
+    backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(255, 228, 125, 0.12);
+    aspect-ratio: 3 / 4;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cover-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 32px 90px rgba(0, 0, 0, 0.95),
+        0 0 70px rgba(255, 228, 125, 0.25);
+}
+
+.book-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.4s ease;
+}
+
+.cover-wrapper:hover .book-cover-image {
+    transform: scale(1.06);
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
+    pointer-events: none;
+}
+
+/* Правая часть */
+.book-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.book-main-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+}
+
+.book-main-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    background: $gradientLogo;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 28px rgba(255, 228, 125, 0.35);
+}
+
+.book-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Мета */
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 20px;
+    background: $glassBackground;
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    border: 1px solid $glassBorder;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.94);
+    font-weight: bold;
+}
+
+.meta-separator {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0.12), transparent);
+}
+
+.meta-value {
+    font-size: 16px;
+    color: #eee;
+    font-weight: 500;
+}
+
+/* Статы */
+.book-stats-row {
+    display: flex;
+    gap: 18px;
+    cursor: pointer;
+}
+
+.stat-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: rgba(7, 7, 7, 0.9);
+    border-radius: 14px;
+    border: 1px solid $glassBorder;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 228, 125, 0.16), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-box:hover::before {
+    opacity: 1;
+}
+
+.stat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+}
+
+/* вместо эмодзи — минималистичные знаки через псевдоэлементы */
+.stat-icon-rating::before,
+.stat-icon-views::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+}
+
+.stat-icon-rating::before {
+    background:
+        conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+    mask: url('/icons/star.svg') center/contain no-repeat;
+}
+
+.stat-icon-views::before {
+    background:
+        conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+    mask: url('/icons/eye.svg') center/contain no-repeat;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #999;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: $yellowAccent;
+}
+
+/* Описание */
+.book-description {
+    padding: 24px 24px 22px;
+    background: rgba(8, 8, 8, 0.95);
+    border-radius: 16px;
+    border: 1px solid $glassBorder;
+}
+
+.description-title {
+    font-size: 18px;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #aaa;
+}
+
+.description-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #d0d0d0;
+}
+
+/* Цена + кнопка */
+.book-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 20px 22px;
+    background: rgba(7, 7, 7, 0.95);
+    border-radius: 16px;
+    border: 1px solid $glassBorder;
+}
+
+.price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.price-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #777;
+}
+
+.price-value {
+    font-size: 26px;
+    font-weight: 700;
+    background: $gradientLogo;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Кнопка без эмодзи */
+.buy-button {
+    position: relative;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, rgba(253, 253, 253, 0.73), rgba(255, 190, 33, 0.67));
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.buy-button-glow {
+    position: absolute;
+    inset: 0;
+    background: $gradientLogo;
+    opacity: 0.22;
+    filter: blur(22px);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.buy-button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.buy-button:hover .buy-button-glow {
+    opacity: 0.4;
+    filter: blur(30px);
+}
