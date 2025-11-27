@@ -14,10 +14,14 @@
 
     .header-title {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 600;
         cursor: pointer;
-        color: rgba(255, 228, 125, 0.9);
+        background: linear-gradient(135deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 20px rgba(255, 228, 125, 0.3);
     }
 
     .header-list {
