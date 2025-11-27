@@ -25,6 +25,7 @@ class HomeController extends Controller
         $booksCards = Book::with(['author', 'publisher'])
             ->orderBy('views', 'desc')
             ->whereNotIn('id', [1, 2, 3, 4, 5])
+            ->take(20)
             ->get();
         return response()->view('pages.home', compact('booksOnMain', 'booksCards'));
     }
