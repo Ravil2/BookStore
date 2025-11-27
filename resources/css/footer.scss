@@ -1,71 +1,70 @@
-
 .footer {
     background-color: #1a1a1a;
     color: #fff;
     padding: 40px 0 20px;
-    margin-top: auto; /* Это ключевое свойство */
+    margin-top: auto;
     width: 100%;
-}
 
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    gap: 40px;
-}
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        gap: 40px;
+    }
 
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-}
+    .footer-section {
+        flex: 1;
+        min-width: 200px;
 
-.footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: rgba(255, 228, 125, 0.9);
-    font-weight: 600;
-}
+        h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: rgba(255, 228, 125, 0.9);
+            font-weight: 600;
+        }
 
-.footer-section p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #ccc;
-}
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
 
-.footer-section ul li {
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #ccc;
-}
+            li {
+                margin-bottom: 10px;
+                font-size: 14px;
+                color: #ccc;
+            }
+        }
 
-.footer-section a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
+        a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
 
-.footer-section a:hover {
-    color: rgba(255, 228, 125, 0.9);
-}
+            &:hover {
+                color: rgba(255, 228, 125, 0.9);
+            }
+        }
+    }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-}
+    .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #333;
 
-.footer-bottom p {
-    font-size: 14px;
-    color: #999;
-    margin: 0;
+        p {
+            font-size: 14px;
+            color: #999;
+            margin: 0;
+        }
+    }
 }

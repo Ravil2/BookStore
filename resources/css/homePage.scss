@@ -4,58 +4,58 @@
     margin: 0 auto;
     width: 100%;
     padding-bottom: 60px;
-}
 
-.main-title {
-    font-size: 4rem;
-    font-weight: 700;
-    color: rgba(255, 228, 125, 0.9);
-    padding: 0;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
+    .main-title {
+        font-size: 4rem;
+        font-weight: 700;
+        color: rgba(255, 228, 125, 0.9);
+        padding: 0;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
 
-.home-sub {
-    margin-top: 90px;
-}
+    .home-sub {
+        margin-top: 90px;
 
-.main-sub-title {
-    color: rgba(255, 228, 125, 0.9);
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-}
+        .main-sub-title {
+            color: rgba(255, 228, 125, 0.9);
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+    }
 
-.btn-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 40px;
-}
+    .btn-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 40px;
 
-.show-all {
-    background: linear-gradient(135deg, #b68b00 0%, #f86700 80%);
-    color: #ffffff;
-    border: none;
-    outline: none;
-    padding: 14px 40px;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(182, 139, 0, 0.3);
-    transition: all 0.3s ease;
-}
+        .show-all {
+            background: linear-gradient(135deg, #b68b00 0%, #f86700 80%);
+            color: #ffffff;
+            border: none;
+            outline: none;
+            padding: 14px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(182, 139, 0, 0.3);
+            transition: all 0.3s ease;
 
-.show-all:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(248, 237, 172, 0.4);
-    background: linear-gradient(135deg, #f8d106 0%, #ffa705 100%);
-}
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(248, 237, 172, 0.4);
+                background: linear-gradient(135deg, #f8d106 0%, #ffa705 100%);
+            }
 
-.show-all a {
-    color: inherit;
-    text-decoration: none;
-    display: block;
+            a {
+                color: inherit;
+                text-decoration: none;
+                display: block;
+            }
+        }
+    }
 }

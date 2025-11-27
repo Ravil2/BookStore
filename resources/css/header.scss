@@ -11,26 +11,26 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     z-index: 100;
     color: #fff;
-}
 
-.header-title {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: rgba(255, 228, 125, 0.9);
-}
+    .header-title {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: rgba(255, 228, 125, 0.9);
+    }
 
-.header-list {
-    display: flex;
-    gap: 1.5rem;
-}
+    .header-list {
+        display: flex;
+        gap: 1.5rem;
 
-.header-list a {
-    transition: color 0.3s;
-    font-weight: bold;
-}
+        a {
+            transition: color 0.3s;
+            font-weight: bold;
 
-.header-list a:hover {
-    color: rgba(255, 255, 0, 0.9);
+            &:hover {
+                color: rgba(255, 255, 0, 0.9);
+            }
+        }
+    }
 }
