@@ -1,6 +1,9 @@
 <section class="reviews-section">
     <div class="reviews-container">
-        <h2 class="reviews-title">Отзывы читателей</h2>
+        <div class="reviews-title-row">
+            <h2 class="reviews-title">Отзывы читателей</h2>
+            <div class="reviews-title-icon"></div>
+        </div>
 
         <div class="reviews-grid">
             {{-- Review 1 --}}

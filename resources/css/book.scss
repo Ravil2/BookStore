@@ -1,24 +1,53 @@
 $gradientLogo: linear-gradient(135deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
 $glassBackground: rgba(255, 255, 255, 0.03);
-$glassBorder: rgba(255, 255, 255, 0.08);
+$glassBorder: rgba(255, 255, 255, 0.09);
 $yellowAccent: rgba(255, 228, 125, 0.95);
 
 .book-page {
     min-height: 100vh;
+    padding-bottom: 70px;
+    position: relative;
+    overflow: hidden;
     background: radial-gradient(circle at top, #151515 0%, #000 55%, #000 100%);
-    padding-bottom: 80px;
+}
+
+/* два жёлтых размытых круга на фоне */
+.book-page::before,
+.book-page::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 214, 100, 0.9), rgba(212, 175, 55, 0));
+    filter: blur(40px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.book-page::before {
+    top: 160px;
+    left: 4%;
+}
+
+.book-page::after {
+    top: 260px;
+    right: 6%;
 }
 
 .book-main {
-    padding: 80px 10rem;
+    padding: 100px 10rem 50px 10rem;
+    position: relative;
+    z-index: 1; // контент поверх кругов
 }
 
 .book-container {
-    max-width: 1320px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-    gap: 56px;
+    grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+    gap: 30px;
     align-items: flex-start;
 }
 
@@ -26,34 +55,34 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
 .book-cover-section {
     position: relative;
     cursor: pointer;
+    /* обложка в сетке занимает чуть больше места */
+    max-width: 560px;   /* было визуально около 420 */
 }
 
 .cover-wrapper {
     position: relative;
+    width: 100%;
     border-radius: 22px;
     overflow: hidden;
     background: $glassBackground;
     backdrop-filter: blur(14px);
     border: 1px solid $glassBorder;
-    box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.9),
-        0 0 40px rgba(255, 228, 125, 0.12);
-    aspect-ratio: 3 / 4;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    /* делаем её чуть выше: было 3 / 4 */
+    aspect-ratio: 4 / 4;  // уже и выше
+    transition: transform 0.4s ease;
 }
+
 
 .cover-wrapper:hover {
     transform: translateY(-6px);
-    box-shadow:
-        0 32px 90px rgba(0, 0, 0, 0.95),
-        0 0 70px rgba(255, 228, 125, 0.25);
 }
 
 .book-cover-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.02);
+    transform: scale(1);
     transition: transform 0.4s ease;
 }
 
@@ -68,19 +97,57 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     pointer-events: none;
 }
 
-/* Правая часть */
 .book-info-section {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 24px;
+
+    padding: 24px 26px;
+    border-radius: 24px;
+
+    /* делаем стекло более прозрачным */
+    background: rgba(10, 10, 10, 0.45); // было ~0.78
+    background-image: linear-gradient(
+            135deg,
+            rgba(50, 50, 50, 0.10), /* усиливаем светлый угол */
+            rgba(0, 0, 0, 0.25)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.18); // чуть ярче граница
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85),
+    0 0 30px rgba(255, 228, 125, 0.18);
+
+    position: relative;
+    overflow: hidden;
 }
 
+/* блик можно тоже ослабить, чтобы круги сильнее читались */
+.book-info-section::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at top left, rgba(255, 228, 125, 0.10), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.03), transparent 55%);
+    opacity: 0.75; // было 0.9
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* контент поверх блика */
+.book-info-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Заголовок */
 .book-main-header {
     display: flex;
     align-items: center;
     gap: 16px;
     cursor: pointer;
-
 }
 
 .book-main-title {
@@ -92,7 +159,6 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     background: $gradientLogo;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 28px rgba(255, 228, 125, 0.35);
 }
 
 .book-badge {
@@ -135,7 +201,7 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
 .meta-separator {
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, rgba(255,255,255,0.12), transparent);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.12), transparent);
 }
 
 .meta-value {
@@ -185,7 +251,7 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     position: relative;
 }
 
-/* вместо эмодзи — минималистичные знаки через псевдоэлементы */
+/* иконки через mask */
 .stat-icon-rating::before,
 .stat-icon-views::before {
     content: "";
@@ -195,14 +261,12 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
 }
 
 .stat-icon-rating::before {
-    background:
-        conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+    background: conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
     mask: url('/icons/star.svg') center/contain no-repeat;
 }
 
 .stat-icon-views::before {
-    background:
-        conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
+    background: conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
     mask: url('/icons/eye.svg') center/contain no-repeat;
 }
 
@@ -239,13 +303,14 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     margin: 0 0 12px;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: #aaa;
+    color: #fff;
 }
 
 .description-text {
     font-size: 15px;
     line-height: 1.8;
     color: #d0d0d0;
+    font-weight: bold;
 }
 
 /* Цена + кнопка */
@@ -280,7 +345,7 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     -webkit-text-fill-color: transparent;
 }
 
-/* Кнопка без эмодзи */
+/* Кнопка */
 .buy-button {
     position: relative;
     flex: 1;
