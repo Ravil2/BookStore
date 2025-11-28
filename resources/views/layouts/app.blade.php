@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookStore</title>
-    @vite(['resources/css/app.scss'])
+    @vite(['resources/css/app.scss', 'resources/js/search.js'])
     @yield('styles')
     @stack('styles')
     @stack('scripts')
     @yield('scripts')
 </head>
-
 
 <body>
 <div class="page-wrapper">

@@ -4,6 +4,9 @@
             BookStore
         </a>
     </h1>
+
+    <x-search :books="$books ?? collect()" :q="isset($q) ? $q : request('q')" />
+
     <nav class="header-list">
         <a href="/">Главная</a>
         <a href="/catalog">Каталог</a>

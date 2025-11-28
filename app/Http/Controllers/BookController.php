@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -54,6 +55,25 @@ class BookController extends Controller
         $books = $query->paginate(12)->withQueryString();
         return response()->view('pages.catalog', compact('books', 'sort'));
     }
+
+    /**
+     * Поиск книг по сайту
+     * @param Request $request
+     * @return Response
+     */
+    public function search(Request $request): JsonResponse
+    {
+        $q = trim($request->input('q', ''));
+        $books = Book::with('author')
+            ->when($q, function ($query, $q) {
+                $query->where('title', 'ILIKE', "%{$q}%")
+                    ->orWhereHas('author', fn($q2) => $q2->where('name', 'ILIKE', "%{$q}%"));
+            })
+            ->limit(5)
+            ->get();
+        return response()->json($books);
+    }
+
 
     //просмотры
     public function incrementViews($id)

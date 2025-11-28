@@ -4,6 +4,7 @@
     @vite('resources/css/card.scss')
     @vite('resources/css/catalog.scss')
     @vite('resources/css/filters.scss')
+    @vite('resources/css/paginnation.scss')
 @endsection
 
 @section('content')
