@@ -1,0 +1,51 @@
+/* resources/css/filters.scss */
+
+.sort-buttons {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sort-buttons a {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #d7d7d7;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.25s ease;
+}
+
+.sort-buttons a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.35), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.sort-buttons a:hover {
+    color: #fff;
+    border-color: rgba(255, 228, 125, 0.4);
+    box-shadow: 0 0 18px rgba(255, 228, 125, 0.3);
+}
+.sort-buttons a:hover::before {
+    opacity: 1;
+}
+
+.sort-buttons a.active {
+    color: #000;
+    background: linear-gradient(135deg, #ffe57d, #ffb300);
+    border-color: transparent;
+    box-shadow: 0 0 24px rgba(255, 210, 90, 0.8);
+}

@@ -7,14 +7,29 @@
 @endsection
 
 @section('content')
-    <div class="catalog-cards">
+    <section class="catalog-page">
+        <div class="catalog-bg"></div>
 
-        @include('components.fillters')
+        <div class="catalog-header">
+            <div class="catalog-title-block">
+                <p class="catalog-kicker">Каталог</p>
+                <h1 class="catalog-title">Книги в нашем магазине:</h1>
+                <p class="catalog-subtitle">
+                    Подборка лучших произведений с рейтингами, отзывами и атмосферой.
+                </p>
+            </div>
 
-        @foreach($books as $book)
-            @include('components.card', ['book' => $book])
-        @endforeach
-    </div>
+            @include('components.fillters')
+        </div>
 
-    {{ $books->links() }}
+        <div class="catalog-grid">
+            @foreach($books as $book)
+                @include('components.card', ['book' => $book])
+            @endforeach
+        </div>
+
+        <div class="catalog-pagination">
+            {{ $books->onEachSide(1)->links('components.pagination') }}
+        </div>
+    </section>
 @endsection

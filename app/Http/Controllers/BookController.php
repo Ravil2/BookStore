@@ -9,42 +9,48 @@ use Illuminate\Http\Response;
 class BookController extends Controller
 {
 
-    //показать отдельную книгу с автором и издателем
+    /**
+     * Показать отдельную книгу с автором и издателем
+     * @param $id
+     * @return Response
+     */
     public function show($id): Response
     {
         $book = Book::with(['author', 'publisher'])
             ->where('id', $id)
             ->first();
-
         if (!$book) {
             abort(404);
         }
-
         return response()->view('pages.book', compact('book'));
     }
 
-    //показать список всех книг с сортировкой и пагинацией
-    public function catalog()
+    /**
+     * Показать список всех книг с сортировкой и пагинацией
+     * @return Response
+     */
+    public function catalog(): Response
     {
-
-    }
-
-    //вернуть топ книг по рейтингу для главной
-    public function topBooks()
-    {
-
-    }
-
-    //поиск книг по названию, автору или издателю
-    public function search(Request $request)
-    {
-
-    }
-
-    //фильтры по цене, рейтингу, жанрам
-    public function filter(Request $request)
-    {
-
+        $sort = request('sort', 'new');
+        $query = Book::with(['author', 'publisher']);
+        switch ($sort) {
+            case 'rating':
+                $query->orderBy('rating', 'desc');
+                break;
+            case 'title':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'author':
+                $query->orderBy('author', 'asc');
+                break;
+            case 'views':
+                $query->orderBy('views', 'desc');
+                break;
+            default:
+                $query->orderBy('id', 'desc');
+        }
+        $books = $query->paginate(12)->withQueryString();
+        return response()->view('pages.catalog', compact('books', 'sort'));
     }
 
     //просмотры

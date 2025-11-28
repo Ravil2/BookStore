@@ -24,7 +24,7 @@
             @include('components.bookCards', ['booksCards' => $booksCards])
 
             <div class="btn-wrapper">
-                <button class="show-all"><a href="/books">Показать все</a></button>
+                <button class="show-all"><a href="/catalog">Показать все</a></button>
             </div>
         </div>
 
