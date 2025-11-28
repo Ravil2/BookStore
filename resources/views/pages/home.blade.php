@@ -7,6 +7,11 @@
     @vite('resources/css/card.scss')
 @endsection
 
+@section('scripts')
+    @vite('resources/js/carousel.js')
+@endsection
+
+
 @section('content')
     <div class="home-page">
         <div class="home-carousel">

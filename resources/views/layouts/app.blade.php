@@ -7,7 +7,10 @@
     @vite(['resources/css/app.scss'])
     @yield('styles')
     @stack('styles')
+    @stack('scripts')
+    @yield('scripts')
 </head>
+
 
 <body>
 <div class="page-wrapper">

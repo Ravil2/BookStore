@@ -6,7 +6,7 @@
     </h1>
     <nav class="header-list">
         <a href="/">Главная</a>
-        <a href="/books">Книги</a>
+        <a href="/catalog">Каталог</a>
         <a href="/cart">Корзина</a>
         <a href="/login">Авторизация</a>
     </nav>
