@@ -41,7 +41,9 @@ class BookController extends Controller
                 $query->orderBy('title', 'asc');
                 break;
             case 'author':
-                $query->orderBy('author', 'asc');
+                $query->join('authors', 'books.author_id', '=', 'authors.id')
+                    ->orderBy('authors.name', 'asc')
+                    ->select('books.*');
                 break;
             case 'views':
                 $query->orderBy('views', 'desc');
