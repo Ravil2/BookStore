@@ -56,7 +56,7 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     position: relative;
     cursor: pointer;
     /* обложка в сетке занимает чуть больше места */
-    max-width: 560px;   /* было визуально около 420 */
+    max-width: 560px; /* было визуально около 420 */
 }
 
 .cover-wrapper {
@@ -69,7 +69,7 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
     border: 1px solid $glassBorder;
 
     /* делаем её чуть выше: было 3 / 4 */
-    aspect-ratio: 4 / 4;  // уже и выше
+    aspect-ratio: 4 / 4; // уже и выше
     transition: transform 0.4s ease;
 }
 
@@ -262,12 +262,12 @@ $yellowAccent: rgba(255, 228, 125, 0.95);
 
 .stat-icon-rating::before {
     background: conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
-    mask: url('/icons/star.svg') center/contain no-repeat;
+    mask: url('/public/icons/star.svg') center/contain no-repeat;
 }
 
 .stat-icon-views::before {
     background: conic-gradient(from 0deg, rgba(255, 228, 125, 0.9), rgba(212, 175, 55, 0.9));
-    mask: url('/icons/eye.svg') center/contain no-repeat;
+    mask: url('/public/icons/eye.svg') center/contain no-repeat;
 }
 
 .stat-content {

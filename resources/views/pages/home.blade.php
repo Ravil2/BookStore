@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('styles')
-    @vite('resources/js/home.js')
+    @vite('resources/css/homePage.scss')
+    @vite('resources/css/carousel.scss')
+    @vite('resources/css/bookCards.scss')
+    @vite('resources/css/card.scss')
 @endsection
 
 @section('content')

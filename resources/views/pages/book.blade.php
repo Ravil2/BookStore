@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('styles')
-    @vite('resources/js/book.js')
+    @vite('resources/css/book.scss')
+    @vite('resources/css/reviews.scss')
 @endsection
 
 @section('content')

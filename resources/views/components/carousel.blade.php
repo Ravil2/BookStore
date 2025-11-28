@@ -1,5 +1,5 @@
 @section('styles')
-    @vite('resources/js/carousel.js')
+    @vite('resources/css/carousel.scss')
 @endsection
 
 
