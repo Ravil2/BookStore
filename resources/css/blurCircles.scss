@@ -1,0 +1,56 @@
+.blur-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    pointer-events: none;
+    animation: float 20s infinite ease-in-out;
+
+    &-1 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.6), transparent);
+        top: -150px;
+        left: -150px;
+        animation-delay: 0s;
+    }
+
+    &-2 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.5), transparent);
+        bottom: -100px;
+        right: -100px;
+        animation-delay: 5s;
+    }
+
+    &-3 {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(255, 235, 59, 0.4), transparent);
+        top: 50%;
+        left: 20%;
+        animation-delay: 10s;
+    }
+
+    &-4 {
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(255, 200, 50, 0.45), transparent);
+        bottom: 20%;
+        left: 50%;
+        animation-delay: 15s;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+}

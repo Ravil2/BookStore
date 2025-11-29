@@ -11,6 +11,6 @@
         <a href="/">Главная</a>
         <a href="/catalog">Каталог</a>
         <a href="/cart">Корзина</a>
-        <a href="/login">Авторизация</a>
+        <a href="/auth">Авторизация</a>
     </nav>
 </header>

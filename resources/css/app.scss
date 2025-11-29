@@ -8,9 +8,9 @@
     box-sizing: border-box;
 }
 
-//::-webkit-scrollbar {
-//    width: 0;
-//}
+::-webkit-scrollbar {
+    width: 0;
+}
 
 ::selection {
     background: rgba(250, 215, 68, 0.77); /* золотистый из твоего градиента */
