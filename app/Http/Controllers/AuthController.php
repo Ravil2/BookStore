@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -30,12 +29,17 @@ class AuthController extends Controller
         $validated = $request->validate([
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
+        ], [
+            'email.required' => 'Введите email',
+            'email.email' => 'Некорректный email',
+            'password.required' => 'Введите пароль',
+            'password.min' => 'Пароль должен быть минимум 6 символов',
         ]);
 
         if (!auth()->attempt($validated)) {
             return back()->withErrors([
                 'email' => 'Неверный email или пароль'
-            ])->withInput();
+            ])->withInput($request->only('email'));
         }
 
         $user = auth()->user();
@@ -43,7 +47,7 @@ class AuthController extends Controller
 
         session(['auth_token' => $token]);
 
-        return redirect()->route('home')->with('success', 'Вы успешно вошли в систему');
+        return redirect()->route('home')->with('success', 'Добро пожаловать, ' . $user->name . '!');
     }
 
     public function register(Request $request)
@@ -52,6 +56,14 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'name.required' => 'Введите имя',
+            'email.required' => 'Введите email',
+            'email.email' => 'Некорректный email',
+            'email.unique' => 'Этот email уже зарегистрирован',
+            'password.required' => 'Введите пароль',
+            'password.min' => 'Пароль должен быть минимум 8 символов',
+            'password.confirmed' => 'Пароли не совпадают',
         ]);
 
         $user = User::create([
@@ -65,7 +77,7 @@ class AuthController extends Controller
 
         session(['auth_token' => $token]);
 
-        return redirect()->route('home')->with('success', 'Регистрация прошла успешно');
+        return redirect()->route('home')->with('success', 'Регистрация успешна! Добро пожаловать, ' . $user->name . '!');
     }
 
     public function logout()
@@ -73,7 +85,6 @@ class AuthController extends Controller
         auth()->logout();
         session()->forget('auth_token');
 
-        return redirect()->route('home')->with('success', 'Вы вышли из системы');
+        return redirect()->route('home')->with('success', 'Вы успешно вышли из системы');
     }
-
 }
