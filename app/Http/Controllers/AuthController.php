@@ -15,26 +15,17 @@ class AuthController extends Controller
         return view('pages.authorization');
     }
 
-    /**
-     * Показать страницу логина (GET)
-     */
     public function showLoginForm()
     {
         return view('components.loginForm');
     }
 
-    /**
-     * Показать страницу регистрации (GET)
-     */
     public function showRegisterForm()
     {
         return view('components.registerForm');
     }
 
-    /**
-     * Обработка логина (POST)
-     */
-    public function login(Request $request): JsonResponse
+    public function login(Request $request)
     {
         $validated = $request->validate([
             'email' => 'required|string|email|max:255',
@@ -42,48 +33,47 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($validated)) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Неверный email или пароль'
-            ], 401);
+            return back()->withErrors([
+                'email' => 'Неверный email или пароль'
+            ])->withInput();
         }
+
         $user = auth()->user();
         $token = JWTAuth::fromUser($user);
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'authorization' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ],
-        ]);
+
+        session(['auth_token' => $token]);
+
+        return redirect()->route('home')->with('success', 'Вы успешно вошли в систему');
     }
 
-    /**
-     * Регистрации (POST)
-     */
-    public function register(Request $request): JsonResponse
+    public function register(Request $request)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
+
         $token = JWTAuth::fromUser($user);
         auth()->login($user);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Пользователь успешно зарегистрирован',
-            'user' => $user,
-            'authorization' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ],
-        ]);
+
+        session(['auth_token' => $token]);
+
+        return redirect()->route('home')->with('success', 'Регистрация прошла успешно');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        session()->forget('auth_token');
+
+        return redirect()->route('home')->with('success', 'Вы вышли из системы');
+    }
+
 }

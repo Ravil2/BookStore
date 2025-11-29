@@ -9,6 +9,7 @@
 
 @section('scripts')
     @vite('resources/js/carousel.js')
+    @vite('resources/js/authHeader.js')
 @endsection
 
 
